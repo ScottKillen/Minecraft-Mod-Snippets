@@ -2,6 +2,11 @@ task echoVersion << {
     printNextVersion()
 }
 
+configure(echoVersion) {
+    group = "Versioning"
+    description = 'Echo the version number to the console'
+}
+
 def saveVersion() {
     ant.propertyfile(
             file: "gradle.properties") {
