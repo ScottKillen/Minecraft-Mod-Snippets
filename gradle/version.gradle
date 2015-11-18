@@ -26,13 +26,28 @@ task bumpMajor << {
     saveVersion()
 }
 
+configure(bumpMajor) {
+    group = "Versioning"
+    description = 'Increment the leftmost version number'
+}
+
 task bumpSeries << {
     project.version_series = Integer.parseInt(project.version_series) + 1
     project.version_revision = "0"
     saveVersion()
 }
 
+configure(bumpSeries) {
+    group = "Versioning"
+    description = 'Increment the middle version number'
+}
+
 task bumpRevision << {
     project.version_revision = Integer.parseInt(project.version_revision) + 1
     saveVersion()
+}
+
+configure(bumpRevision) {
+    group = "Versioning"
+    description = 'Increment the rightmost version number'
 }
